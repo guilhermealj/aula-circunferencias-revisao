@@ -1,0 +1,2 @@
+# Mantém os HTMLs idênticos no Windows, no Git e no GitHub Pages.
+*.html text eol=lf
