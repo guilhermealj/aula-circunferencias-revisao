@@ -164,7 +164,7 @@ const LessonCore = (() => {
       "Arco AB = 70°"
     ],
     "key": "x=15; arco AB=70°",
-    "slide": 18
+    "slide": 17
   },
   {
     "id": "Q7",
@@ -173,7 +173,7 @@ const LessonCore = (() => {
       "Arco AC = 100°"
     ],
     "key": "100°",
-    "slide": 19
+    "slide": 18
   },
   {
     "id": "Q8",
@@ -183,7 +183,7 @@ const LessonCore = (() => {
       "Circunscrito 88°"
     ],
     "key": "92°; 88°",
-    "slide": 23
+    "slide": 21
   },
   {
     "id": "Q9",
@@ -194,7 +194,7 @@ const LessonCore = (() => {
       "Circunscrito 60°"
     ],
     "key": "70°; π/2 rad; 60°",
-    "slide": 25
+    "slide": 23
   }
 ];
   const uid=()=>typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2);
@@ -420,243 +420,150 @@ const Content = (() => {
   const teach=guide=>{slides.at(-1).guide=guide;};
 
   // 01 — abertura
-  add('Circunferências','Abertura','<div class="cover-grid"><div class="cover-copy"><div class="kicker">Aula 12 · 14 nov 2026</div><h1>CIRCUN<span>FERÊNCIAS</span></h1><p class="intro">Uma volta para descobrir<br><strong>medidas e ângulos.</strong></p><p class="prof">Professor Guilherme Almeida · MatMov</p><div class="cover-chips">'+chip('Primeiro encontro')+chip('90 minutos','orange')+'</div></div><div class="stack"><div class="mission"><div class="mission-head"><span>Missão de hoje</span><span>360° = 2π rad</span></div><div class="scene" data-figure="inscribed" data-revealed="true"></div><div class="mission-bottom"><div>OBSERVAR<strong>Uma borda</strong></div><div>EXPLORAR<strong>Um arco</strong></div><div>EXPLICAR<strong>Um ângulo</strong></div></div></div><p class="hand">A mesma curva esconde muitas relações.</p></div></div>',
+  add('Circunferências','Abertura','<div class="cover-grid"><div class="cover-copy"><div class="kicker">Aula 12 · 14 nov 2026</div><h1>CIRCUN<span>FERÊNCIAS</span></h1><p class="intro">Definições, medidas e<br><strong>relações entre ângulos.</strong></p><p class="prof">Professor Guilherme Almeida · MatMov</p><div class="cover-chips">'+chip('Primeiro encontro')+chip('90 minutos','orange')+'</div></div><div class="stack"><div class="mission"><div class="mission-head"><span>Conteúdo da aula</span><span>360° = 2π rad</span></div><div class="scene" data-figure="inscribed" data-revealed="true"></div><div class="mission-bottom"><div>OBSERVAR<strong>Uma borda</strong></div><div>EXPLORAR<strong>Um arco</strong></div><div>EXPLICAR<strong>Um ângulo</strong></div></div></div><p class="hand">Estudo dos elementos, das medidas e dos ângulos da circunferência.</p></div></div>',
     'Apresente o tema, sem antecipar as relações da figura. Aula de 90 minutos, primeira abordagem de circunferências. Habilidade EF09MA11. A capa permite explorar, mas reserve a investigação do inscrito para o bloco do cinema.','','0–5 min');
   describe('Capa: Aula 12, Circunferências, 14 nov 2026, 90 minutos. Figura com arco AB de 120°, central de 120° e inscrito de 60°, controles de posição de P e medida do arco. Objetivo: observar borda, explorar arco e explicar ângulo.');
   teach(['Diga que hoje vamos descrever algo que aparece em muitos objetos.','Mostre que a aula terá previsão, experimentação e explicação.','Não explique ainda a relação entre os ângulos da capa.']);
 
-  // 02
-  add('Onde a circunferência aparece?','Olhar ao redor',cols(card('Olhe para os contornos',fig('everyday')+'<p class="hand">Um objeto pode sugerir mais de uma figura.</p>','blue'),card('Sua vez',chip('Q1 · vale participar','orange')+'<p class="question">Encontre um exemplo perto de você.</p><p>No chat: diga o objeto e qual parte dele lembra uma circunferência.</p><div class="callout">É a <strong>borda</strong>? A superfície inteira? O caminho de uma ponta?</div>'+chat('Q1'),'orange')),
+  add('Exemplos de circunferências no cotidiano','Olhar ao redor',cols(card('Olhe para os contornos',fig('everyday')+'<p class="hand">Partes diferentes de um objeto podem representar figuras diferentes.</p>','blue'),card('Sua vez',chip('Q1 · vale participar','orange')+'<p class="question">Encontre um exemplo perto de você.</p><p>No chat: diga o objeto e qual parte dele lembra uma circunferência.</p><div class="callout">É a <strong>borda</strong>? A superfície inteira? O caminho de uma ponta?</div>'+chat('Q1'),'orange')),
     'Recolha exemplos durante 45 segundos. Não classifique o objeto inteiro como circunferência: pergunte qual parte é modelada. Estimativa aberta, sem gabarito e sem crédito por primeiro acerto.','Q1');
   describe('Modelos de roda, relógio, moeda e prato. Q1 pede um objeto próximo e a parte que lembra uma circunferência; resposta aberta, sem gabarito numérico.');
   teach(['Peça um exemplo no chat.','Retome dois exemplos: borda de prato e face de moeda.','Explique que trabalhamos com modelos planos de partes dos objetos.']);
 
-  // 03
-  add('A borda e a região','Primeiros conceitos',cols(card('',fig('circle-disc'),'blue'),card('Duas palavras, dois olhares',bullets(['<strong>Circunferência:</strong> somente o contorno.','<strong>Círculo:</strong> contorno e região interna.'])+'<div class="callout green">Nesta aula, vamos estudar o contorno e as relações de ângulos.</div><p class="small">A área do círculo será estudada em outra aula.</p>')),
+  add('Diferença entre círculo e circunferência','Primeiros conceitos',cols(card('',fig('circle-disc'),'blue'),card('Circunferência e círculo',bullets(['<strong>Circunferência:</strong> somente o contorno.','<strong>Círculo:</strong> contorno e região interna.'])+'<div class="callout green">Nesta aula, vamos estudar o contorno e as relações de ângulos.</div><p class="small">A área do círculo será estudada em outra aula.</p>')),
     'Alterne os dois modos. Use o mesmo desenho, mantendo a borda, para que a diferença seja o preenchimento. A apostila por vezes alterna os termos; mantenha a distinção na explicação.','','5–14 min');
   describe('Uma mesma circunferência com botões Só o contorno e Contorno + interior. O segundo preenche a região e nomeia círculo. Texto diferencia circunferência e círculo; não apresenta fórmula de área.');
   teach(['Mostre só a linha e pergunte o nome.','Preencha o interior e nomeie círculo.','Diga: o contorno tem comprimento; a região tem área, assunto de outra aula.']);
 
-  // 04
-  add('Uma distância que não muda','Definição de circunferência',cols(card('',fig('compass'),'blue'),card('Um centro. Um raio.', '<p>A circunferência é o conjunto dos pontos do plano que estão a uma <strong>distância fixa r</strong> de um ponto <strong>O</strong>.</p>'+eq('OP = r',true)+'<p><strong>O</strong> é o centro.<br><strong>r</strong> é o raio.</p><div class="callout">Mude a direção da ponta. O que permanece igual?</div>'),'wide'),
+  add('Definição de circunferência','Definição de circunferência',cols(card('',fig('compass'),'blue'),card('Centro e raio', '<p>A circunferência é o conjunto dos pontos do plano que estão a uma <strong>distância fixa r</strong> de um ponto <strong>O</strong>.</p>'+eq('OP = r',true)+'<p><strong>O</strong> é o centro.<br><strong>r</strong> é o raio.</p><div class="callout">Mude a direção da ponta. O que permanece igual?</div>'),'wide'),
     'Comece com raio 4 cm e traçado 45°. Mova o traçado até completar a volta. Só depois mude o raio. A figura usa centímetros como medida do modelo, não como tamanho físico da tela.');
   describe('Compasso virtual: raio de 2 a 5 cm, inicial 4; traçado de 0° a 360°, inicial 45°. O e P unidos por um raio; arco verde revela o percurso. Botões completar volta e restaurar. OP permanece igual ao raio.');
   teach(['Fixe r e mova o traçado.','Peça que identifiquem o que mudou e o que ficou igual.','Complete a volta: todos esses pontos têm distância r de O.','Mude r: agora obtemos outra circunferência.']);
 
-  // 05
-  add('Raio e diâmetro','Elementos',cols(card('',fig('elements'),'blue'),card('Dois raios formam um diâmetro',bullets(['<strong>Raio:</strong> do centro até a circunferência.','<strong>Diâmetro:</strong> segmento que une dois pontos da circunferência e passa pelo centro.'])+eq('d = 2r',true)+chip('Q2 · confira na figura','orange')+'<p class="question">Se r = 4 cm, quanto vale d? E se d = 12 cm, quanto vale r?</p>'+steps(['d = 2 · 4 = <strong>8 cm</strong>.','r = 12 ÷ 2 = <strong>6 cm</strong>.'])+chat('Q2'),'orange'),'wide'), 'Identifique o centro e os extremos. Q2 tem dois componentes: 8 cm e 6 cm.','Q2');
+  add('Raio e diâmetro','Elementos',cols(card('',fig('elements'),'blue'),card('Relação entre raio e diâmetro',bullets(['<strong>Raio:</strong> do centro até a circunferência.','<strong>Diâmetro:</strong> segmento que une dois pontos da circunferência e passa pelo centro.'])+eq('d = 2r',true)+chip('Q2 · confira na figura','orange')+'<p class="question">Se r = 4 cm, quanto vale d? E se d = 12 cm, quanto vale r?</p>'+steps(['d = 2 · 4 = <strong>8 cm</strong>.','r = 12 ÷ 2 = <strong>6 cm</strong>.'])+chat('Q2'),'orange'),'wide'), 'Identifique o centro e os extremos. Q2 tem dois componentes: 8 cm e 6 cm.','Q2');
   describe('Circunferência de raio 4 cm. Seletor de raio e diâmetro. Q2 pede diâmetro para raio 4 cm e raio para diâmetro 12 cm: 8 cm e 6 cm. Solução em dois passos ocultos.');
   teach(['Mostre o raio e o diâmetro.','Identifique o centro e os dois raios que formam o diâmetro.','Recolha Q2 e revele os dois resultados.']);
 
-  // 06
-  add('Dois caminhos entre A e B','Arcos',cols(card('',fig('arcs'),'blue'),card('Arco é um trecho do contorno','<p>Dois pontos distintos dividem a circunferência em <strong>dois arcos</strong>.</p><p>Se os comprimentos forem diferentes, temos um <strong>arco menor</strong> e um <strong>arco maior</strong>.</p>'+eq('120° + 240° = 360°')+'<p>Se A e B são extremos de um diâmetro, os dois arcos são <strong>semicircunferências</strong>.</p><div class="callout blue">Um arco de 120° não tem comprimento de 120 cm.</div>'),'wide'),
+  add('Arcos de circunferência','Arcos',cols(card('',fig('arcs'),'blue'),card('Arco é um trecho do contorno','<p>Dois pontos distintos dividem a circunferência em <strong>dois arcos</strong>.</p><p>Se os comprimentos forem diferentes, temos um <strong>arco menor</strong> e um <strong>arco maior</strong>.</p>'+eq('120° + 240° = 360°')+'<p>Se A e B são extremos de um diâmetro, os dois arcos são <strong>semicircunferências</strong>.</p><div class="callout blue">Um arco de 120° não tem comprimento de 120 cm.</div>'),'wide'),
     'Explore os casos 120°, 180°, 0° e 360°. Se A e B coincidem, destaque a convenção de arco nulo ou de uma volta. Não use apenas AB para distinguir dois arcos; diga selecionado/outro ou menor/maior.');
   describe('Arcos móveis: selecionado inicial 120°, outro 240°. Controle de 0° a 360° e botões meia volta e volta inteira. Mostra coincidência A=B nos extremos e distingue medida angular de comprimento.');
   teach(['Siga com o cursor os dois caminhos entre A e B.','Passe pela meia volta e explique as duas semicircunferências.','Mostre a coincidência dos pontos e os casos nulo/volta inteira.','Avise que ainda vamos estudar como os graus medem esse trecho.']);
 
-  // 07
-  add('O contorno tem comprimento','Perímetro',cols(card('',fig('perimeter'),'blue'),card('Uma fita em volta','<p>O <strong>perímetro do círculo</strong> é o comprimento da sua circunferência.</p><p>Imagine envolver o objeto com barbante e depois esticar esse barbante.</p>'+eq('C = comprimento do contorno')+'<div class="callout">Como comparar o contorno de uma tampa com o de um prato?</div>'),'wide'),
+  add('Perímetro da circunferência','Perímetro',cols(card('',fig('perimeter'),'blue'),card('Comprimento do contorno','<p>O <strong>perímetro do círculo</strong> é o comprimento da sua circunferência.</p><p>Imagine envolver o objeto com barbante e depois esticar esse barbante.</p>'+eq('C = comprimento do contorno')+'<div class="callout">Como comparar o contorno de uma tampa com o de um prato?</div>'),'wide'),
     'Mude o raio e compare o círculo e o segmento desenrolado, ambos em uma escala comum. O valor exato aparece na figura; explore a razão apenas na próxima tela.','','14–23 min');
   describe('Raio ajustável de 1 a 4 cm, inicial 3. Circunferência e segmento do mesmo comprimento que seu contorno, na mesma escala. Painel com r, d e C. Texto define perímetro e sugere barbante.');
   teach(['Faça o gesto de contornar e esticar o barbante.','Peça previsões sobre um objeto com o dobro do diâmetro.','Convide a turma a compartilhar as medidas coletadas.']);
 
-  // 08
-  add('Laboratório do π','Dinâmica 1 · medir e comparar',fig('pi-lab'),
+  add('Estimativa de π por medições','Dinâmica 1 · medir e comparar',fig('pi-lab'),
     'Use 3 a 5 medições da turma para caber em 9 minutos. Todas em centímetros. O professor transcreve o que chega pelo chat; não há envio entre aparelhos. Os exemplos são ilustrativos e identificados. Medições ficam somente neste navegador. Não prometa que toda medição dará exatamente 3,14.');
   describe('Formulário local para objeto, diâmetro em cm e contorno em cm. Tabela inicialmente vazia com razões C/d escondidas. Adiciona, remove, limpa, revela razões e calcula a média aritmética de C/d; exemplo ilustrativo opcional de tampa, copo e prato. Compara aproximações com π≈3,14159 sem tratá-las como valores exatos.');
   teach(['Peça objeto, d e C no chat, todos em cm.','Registre algumas medições. Antes de revelar, pergunte se os resultados vão ser parecidos.','Revele C/d e compare objetos de tamanhos diferentes.','Discuta erro de medição; não descarte automaticamente um resultado diferente.','Se faltar material, use os exemplos, avisando que são ilustrativos.']);
 
-  // 09
-  add('Do laboratório à fórmula','Comprimento da circunferência',cols(card('A razão que não depende do tamanho',eq(fraction('C','d')+' = π',true)+'<p>Para qualquer circunferência, a razão entre o contorno e o diâmetro é a mesma.</p>'+eq('C = πd = 2πr')+'<p class="small">π ≈ 3,14159… Não é exatamente 3,14.</p>','green'),card('Agora use a relação',chip('Q3 · perímetro','orange')+'<p class="question">Uma circunferência tem raio de 5 cm. Quanto mede seu contorno?</p>'+steps(['d = 2 · 5 = 10 cm.','C = π · 10 = <strong>10π cm</strong>.','Com π ≈ 3,14: C ≈ <strong>31,4 cm</strong>.'])+chat('Q3'),'orange')),
+  add('Fórmula do perímetro da circunferência','Comprimento da circunferência',cols(card('A razão entre perímetro e diâmetro',eq(fraction('C','d')+' = π',true)+'<p>Para qualquer circunferência, a razão entre o contorno e o diâmetro é a mesma.</p>'+eq('C = πd = 2πr')+'<p class="small">π ≈ 3,14159… Não é exatamente 3,14.</p>','green'),card('Cálculo do perímetro',chip('Q3 · perímetro','orange')+'<p class="question">Uma circunferência tem raio de 5 cm. Quanto mede seu contorno?</p>'+steps(['d = 2 · 5 = 10 cm.','C = π · 10 = <strong>10π cm</strong>.','Com π ≈ 3,14: C ≈ <strong>31,4 cm</strong>.'])+chat('Q3'),'orange')),
     'Q3 aceita 10π cm como resposta exata; aceite aproximação com hipótese de π explícita. Não confunda diâmetro 10 cm com contorno 10π cm.','Q3');
   describe('Fórmulas C/d=π e C=πd=2πr. Q3: raio 5 cm, contorno 10π cm, aproximadamente 31,4 cm com π≈3,14. Resolução em três passos, inicialmente escondida.');
   teach(['Conecte a razão experimental à constante matemática.','Peça Q3 antes de abrir os passos.','Distinga a resposta exata da aproximação e confira a unidade cm.']);
 
-  // 10
-  add('Abertura e caminho são medidas diferentes','Medida angular × comprimento','<div class="cols three grow">'+card('Abertura', '<div class="big-word blue-text">60°</div><p>Medida angular.</p><p class="small">Também podemos expressá-la em radianos.</p>','blue')+card('Caminho','<div class="big-word orange-text">ℓ</div><p>Comprimento do arco.</p><p class="small">Pode ser dado em cm, m, km… Depende também do raio.</p>','orange')+card('Compare','<p class="question">Dois arcos de 60° precisam ter o mesmo comprimento?</p>'+steps(['<strong>Não.</strong> Um círculo maior tem um arco mais comprido para a mesma abertura.']),'green')+'</div>',
-    'Use o gesto de abrir dois braços e depois o gesto de percorrer uma borda. Retome a distinção nas telas de comprimento de arco.','','23–39 min');
-  describe('Três cartões: 60° como medida angular; ℓ como comprimento em cm/m/km; pergunta se dois arcos de 60° têm mesmo comprimento. Resposta escondida: não, o raio também importa.');
-  teach(['Pergunte antes de revelar.','Compare mentalmente uma roda de bicicleta e um pneu de trator com a mesma abertura.','Mantenha essa pergunta em aberto para testar na figura de comprimento de arco.']);
-
-  // 11
-  add('O ângulo que mora no centro','Ângulo central',cols(card('',fig('central'),'blue'),card('Vértice em O','<p>Os lados do ângulo central passam pelos extremos do arco.</p>'+eq('central = medida angular do arco',true)+'<p>Para os mesmos pontos A e B, os dois ângulos centrais correspondentes completam uma volta:</p>'+eq('α + β = 360°')+'<p class="small">São ângulos <strong>replementares</strong>.</p>'),'wide'),
+  add('Ângulo central e medida do arco','Ângulo central',cols(card('',fig('central'),'blue'),card('Vértice em O','<p>Os lados do ângulo central passam pelos extremos do arco.</p>'+eq('central = medida angular do arco',true)+'<p>Para os mesmos pontos A e B, os dois ângulos centrais correspondentes completam uma volta:</p>'+eq('α + β = 360°')+'<p class="small">São ângulos <strong>replementares</strong>.</p>'),'wide'),
     'Mostre central de 120° e seu correspondente de 240°. Não escolha sempre o menor quando falar de arco correspondente. Um central associado ao arco maior é maior que 180°.');
   describe('Figura inicial com arcos e centrais de 120° e 240°. Slider permite 0°–360°. Explica vértice no centro, igualdade central/arco correspondente e soma dos dois centrais igual a 360°, replementares.');
   teach(['Localize o vértice O antes de falar da medida.','Associe cada central ao seu próprio arco.','Passe de 120° para 240° e diga que o arco correspondente também muda.']);
 
-  // 12
-  add('Uma volta, duas unidades','Graus e radianos',cols(card('',fig('unit-wheel'),'blue'),card('A mesma abertura',eq('360° = 2π rad',true)+eq('180° = π rad')+'<p><strong>Graus</strong> e <strong>radianos</strong> são duas unidades de medida de ângulo.</p><p class="question">Como o raio pode ajudar a medir um ângulo?</p>')),
+  add('Medidas de ângulos em graus e radianos','Graus e radianos',cols(card('',fig('unit-wheel'),'blue'),card('Equivalências entre graus e radianos',eq('360° = 2π rad',true)+eq('180° = π rad')+'<p><strong>Graus</strong> e <strong>radianos</strong> são duas unidades de medida de ângulo.</p><p class="question">Como o raio pode ajudar a medir um ângulo?</p>')),
     'A roda usa sentido horário apenas como percurso visual, sem trabalhar ângulos orientados. O radiano será explicado por comprimento de arco na próxima tela.');
   describe('Roda com marcações 0°=0 rad, 90°=π/2 rad, 180°=π rad e 270°=3π/2 rad. Legenda abaixo do círculo indica volta completa 360°=2π rad, fora das linhas tracejadas. Texto apresenta as duas unidades e pergunta como o raio pode ajudar a medir um ângulo.');
   teach(['Retome a volta de 360°.','Pergunte como poderíamos usar o raio para medir um ângulo, sem explorar a origem do nome radiano.','Apresente a equivalência; na próxima figura, compare o comprimento do arco com o raio.']);
 
-  // 13
-  add('Um raio que vira arco','Dinâmica 2 · construir o radiano',cols(card('',fig('radian'),'blue'),card('O que é 1 radiano?','<p>É a medida do ângulo central cujo arco tem <strong>comprimento igual ao raio</strong>.</p>'+eq('ℓ = r → θ = 1 rad',true)+'<p>Em uma volta, o contorno mede <strong>2π raios</strong>.</p><div class="callout green">Mude o raio com o arco em 1 rad. O que acontece com a abertura?</div>'),'wide'),
+  add('Definição de radiano','Dinâmica 2 · construir o radiano',cols(card('',fig('radian'),'blue'),card('O que é 1 radiano?','<p>É a medida do ângulo central cujo arco tem <strong>comprimento igual ao raio</strong>.</p>'+eq('ℓ = r → θ = 1 rad',true)+'<p>Em uma volta, o contorno mede <strong>2π raios</strong>.</p><div class="callout green">Mude o raio com o arco em 1 rad. O que acontece com a abertura?</div>'),'wide'),
     'O segmento reto e cada trecho completo de cor têm o mesmo comprimento r. Use 1 rad, mude r, depois acrescente raios. Seis raios não completam a volta: faltam aproximadamente 0,283 raio. Não arredonde 2π para 6.');
   describe('Laboratório de radianos: raio 2–5 cm, inicial 3; razão ℓ/r entre 0 e 2π, inicial 1. Segmento reto mede r; arco é dividido em trechos de 1 radiano. Botões 1 rad, +1 raio, completar volta, restaurar. Painel mostra radianos, graus e comprimento; ao mudar r, ângulo fixo permanece igual.');
   teach(['Mostre o segmento de comprimento r e um trecho de arco de igual comprimento.','Dê o nome 1 radiano ao central correspondente.','Mude o raio sem alterar a quantidade de raios do arco.','Acrescente raios até seis: ainda falta um trecho.','Complete a volta e conecte C=2πr a 2π rad.']);
 
-  // 14
-  add('Converter é comparar com meia volta','Graus ↔ radianos',cols(card('De graus para radianos',chip('Q4 · parte a','orange')+'<p class="question">60° correspondem a quantos radianos?</p>'+eq('180° ↔ π rad<br>60° ↔ x')+steps(['x = '+fraction('60 · π','180'),'x = <strong>π/3 rad</strong>.']),'blue'),card('De radianos para graus',chip('Q4 · parte b','orange')+'<p class="question">5π/6 rad correspondem a quantos graus?</p>'+eq('π rad ↔ 180°<br>5π/6 rad ↔ x')+steps(['x = '+fraction('5π','6')+' · '+fraction('180°','π'),'x = <strong>150°</strong>.'])+chat('Q4'),'orange')),
+  add('Conversão entre graus e radianos','Graus ↔ radianos',cols(card('De graus para radianos',chip('Q4 · parte a','orange')+'<p class="question">60° correspondem a quantos radianos?</p>'+eq('180° ↔ π rad<br>60° ↔ x')+steps(['x = '+fraction('60 · π','180'),'x = <strong>π/3 rad</strong>.']),'blue'),card('De radianos para graus',chip('Q4 · parte b','orange')+'<p class="question">5π/6 rad correspondem a quantos graus?</p>'+eq('π rad ↔ 180°<br>5π/6 rad ↔ x')+steps(['x = '+fraction('5π','6')+' · '+fraction('180°','π'),'x = <strong>150°</strong>.'])+chat('Q4'),'orange')),
     'Regra de três nas duas direções. Recolha as duas partes separadamente, sem exigir formato rígido no chat. No tempo principal, priorize 60°; o inverso pode ser concluído na consulta se a turma precisar de mais tempo.','Q4');
   describe('Q4 em dois cartões: converter 60° para π/3 rad e converter 5π/6 rad para 150°. Usa 180°↔π rad com soluções em dois passos independentes e escondidos.');
   teach(['Monte a correspondência com 180° e π rad.','Peça a primeira conversão; revele um passo por vez.','Na segunda, mostre o cancelamento de π.','Confira se a resposta final usa a unidade pedida.']);
 
-  // 15
-  add('Um mapa para consultar','Conversões frequentes',cols(card('Frações de meia volta','<table class="mini-table conversion-table"><thead><tr><th>Graus</th><th>Radianos</th></tr></thead><tbody>'+[['30°','π/6'],['45°','π/4'],['60°','π/3'],['90°','π/2'],['120°','2π/3']].map(([a,b])=>'<tr><td>'+a+'</td><td class="math">'+b+' rad</td></tr>').join('')+'</tbody></table>','blue'),card('Da meia volta à volta inteira','<table class="mini-table conversion-table"><thead><tr><th>Graus</th><th>Radianos</th></tr></thead><tbody>'+[['135°','3π/4'],['150°','5π/6'],['180°','π'],['270°','3π/2'],['360°','2π']].map(([a,b])=>'<tr><td>'+a+'</td><td class="math">'+b+' rad</td></tr>').join('')+'</tbody></table>','green'))+'<div class="callout">Não é preciso decorar a tabela inteira: reconstrua usando <strong>180° = π rad</strong>.</div>',
-    'Tela de apoio, não uma bateria de dez exercícios durante a aula. Pode ser passada rapidamente e retomada em consulta ou nas reservas.');
-  describe('Tabela de conversões: 30 π/6, 45 π/4, 60 π/3, 90 π/2, 120 2π/3, 135 3π/4, 150 5π/6, 180 π, 270 3π/2 e 360 2π, todos os valores em graus e radianos identificados.');
-  teach(['Mostre a tabela como apoio.','Peça que expliquem uma linha usando a meia volta.','Siga para relacionar essa abertura a um comprimento.']);
-
-  // 16
-  add('De graus para radianos','Arcos · regra de três',cols(card('Compare com uma volta',eq('360° ↔ 2π rad')+eq('30° ↔ x')+'<p>Qual é a medida angular do arco em radianos?</p>','blue'),card('Construa a proporção',steps(['360° · x = 30° · 2π rad.','x = 60π/360 = <strong>π/6 rad</strong>.'])+'<div class="callout">Graus e radianos expressam a mesma medida angular.</div>','orange')), 'Exemplo da apostila: use uma volta completa como referência.');
-  describe('Conversão angular de um arco de 30 graus para radianos, por regra de três com 360 graus e 2π radianos. Resultado π/6 rad, com solução em duas etapas.');
-  teach(['Escreva as correspondências.','Peça que montem a proporção.','Revele π/6 rad e confira a unidade.']);
-
-  add('De radianos para graus','Arcos · regra de três',cols(card('Agora no sentido inverso',eq('π rad ↔ 180°')+eq('5π/6 rad ↔ x')+'<p class="question">Qual é a medida do arco em graus?</p>','blue'),card('Resolva por etapas',steps(['x = (5π/6) · 180°/π.','x = <strong>150°</strong>.'])+'<div class="callout">Escolha meia volta ou uma volta completa como referência.</div>','green')), 'Retome a conversão em sentido inverso, aceitando os caminhos equivalentes.');
-  describe('Conversão angular de 5π/6 radianos para graus, usando π radianos equivalentes a 180 graus. Resultado 150 graus.');
-  teach(['Peça a correspondência com meia volta.','Monte a regra de três.','Confira que o resultado é 150 graus.']);
-
-  // 18
-  add('Onde está o vértice?','Ângulo central e ângulo inscrito',cols(card('Central · vértice no centro',fig('intro-central')+'<p>O vértice <strong>O</strong> está no centro. Os lados passam por A e B.</p>','blue'),card('Inscrito · vértice na circunferência',fig('intro-inscribed')+'<p>O vértice <strong>P</strong> está na circunferência. Os lados passam por A e B.</p>','green'))+'<div class="callout">O arco AB destacado é o mesmo. Que relação há entre os ângulos?</div>',
+  add('Definições de ângulo central e inscrito','Ângulo central e ângulo inscrito',cols(card('Central · vértice no centro',fig('intro-central')+'<p>O vértice <strong>O</strong> está no centro. Os lados passam por A e B.</p>','blue'),card('Inscrito · vértice na circunferência',fig('intro-inscribed')+'<p>O vértice <strong>P</strong> está na circunferência. Os lados passam por A e B.</p>','green'))+'<div class="callout">O arco AB destacado é o mesmo. Que relação há entre os ângulos?</div>',
     'Retome a definição já vista do central. Antes de comparar medidas, apresente o inscrito e mostre seu vértice na circunferência. Na figura inscrita, o arco destacado AB é o que não contém P. A pergunta prepara a investigação, sem antecipar a regra.','','39–58 min');
   describe('Dois desenhos lado a lado com o mesmo arco AB destacado. À esquerda, ângulo central AÔB com vértice O no centro. À direita, inscrito APB com vértice P na circunferência. Ambos têm lados passando por A e B. Pergunta sobre a relação, sem revelar medidas.');
   teach(['Retome a figura da esquerda: o vértice O está no centro, então AÔB é central.','Na figura da direita, localize P na circunferência e acompanhe os lados PA e PB: APB é inscrito.','Aponte A e B e o mesmo arco destacado nas duas figuras; no inscrito, esse arco não contém P.','Peça uma hipótese sobre a relação entre as aberturas. Não revele o dobro ainda.','Na próxima tela, mova P e deixe a turma testar o que acontece.']);
 
-  // 19
-  add('Cinema: o ângulo vai mudar?','Dinâmica 3 · prever e experimentar',cols(card('',fig('inscribed','data-screen="true"'),'blue'),card('Aposte antes de arrastar',chip('Q5 · três descobertas','orange')+'<p class="question">Quando P muda de lugar, o ângulo aumenta, diminui ou fica igual?</p><p>Depois de testar:</p><p>1. O que aconteceu?<br>2. Qual a medida do inscrito?<br>3. O que foi mantido na figura?</p>'+chat('Q5'),'orange'),'wide'),
+  add('Ângulo inscrito: movendo o vértice','Dinâmica 3 · prever e experimentar',cols(card('',fig('inscribed','data-screen="true"'),'blue'),card('Observe o ângulo ao mover P',chip('Q5 · três descobertas','orange')+'<p class="question">Quando P muda de lugar, o ângulo aumenta, diminui ou fica igual?</p><p>Depois de testar:</p><p>1. O que aconteceu?<br>2. Qual a medida do inscrito?<br>3. O que foi mantido na figura?</p>'+chat('Q5'),'orange'),'wide'),
     'Recolha previsões sem pontuar o palpite como erro final. Mova P mantendo arco AB=120°. Somente depois revele as medidas. Q5: fica constante; 60°; mesmo arco observado. Não use a regra informal perto/longe como teorema.','Q5');
   describe('Cinema: segmento AB traçado; arco observado AB inicial 120°, P móvel no arco oposto e medidas dos ângulos inicialmente escondidas. Slider e arraste de P, arco ajustável 30°–180°, revelar medidas, diâmetro e restaurar. Q5 pede constância, inscrito 60° e manutenção do mesmo arco.');
   teach(['Peça uma previsão no chat, sem revelar os números.','Mova só P por pelo menos três posições.','Revele as medidas e peça que revisem a hipótese.','Pergunte o que foi mantido: A, B e o arco observado.','Só depois varie o arco e compare outra situação.']);
 
-  // 20
-  add('O central vale o dobro','A relação principal',cols(card('',fig('inscribed','data-revealed="true"'),'blue'),card('Quando observam o mesmo arco',eq('central = 2 × inscrito',true)+eq('inscrito = '+fraction('arco observado','2'))+'<p>Para um arco de 120°:</p>'+eq('central = 120°<br>inscrito = 60°')+'<div class="callout green">Primeiro associe os ângulos ao <strong>mesmo arco</strong>.</div>'),'wide'),
+  add('Relação entre ângulo central e inscrito','A relação principal',cols(card('',fig('inscribed','data-revealed="true"'),'blue'),card('Quando observam o mesmo arco',eq('central = 2 × inscrito',true)+eq('inscrito = '+fraction('arco observado','2'))+'<p>Para um arco de 120°:</p>'+eq('central = 120°<br>inscrito = 60°')+'<div class="callout green">Primeiro associe os ângulos ao <strong>mesmo arco</strong>.</div>'),'wide'),
     'A relação se refere ao arco que não contém o vértice inscrito. Mostre outro valor, como 80° e 40°. Evite enunciar central=2×inscrito sem a condição.');
   describe('Figura com arco e central 120°, inscrito 60°, medidas visíveis e P móvel. Fórmulas central=2×inscrito e inscrito=metade do arco observado. Condição mesmo arco destacada.');
   teach(['Escreva a relação a partir das medidas observadas.','Teste outro arco.','Peça aos alunos para completar a frase: central é o dobro de qual inscrito?']);
 
-  // 21
-  add('Por que aparece o dobro?','Uma demonstração curta',cols(card('',fig('proof'),'blue'),card('Caso: um lado passa pelo centro',steps(['OP = OB, pois são <strong>raios</strong>.','O triângulo OPB é isósceles: os dois ângulos da base valem <strong>α</strong>.','O central AÔB é externo ao triângulo OPB: <strong>α + α = 2α</strong>.'])+'<p class="small">A relação também vale nas outras posições. Aqui demonstramos um caso que torna o dobro visível.</p>','green'),'wide'),
-    'Mostre P,O,A alinhados nessa ordem. O ângulo externo no centro é AOB, enquanto POB é interno ao triângulo. A figura distingue ambos. Não apresente esse único caso como demonstração completa de todos os casos.');
-  describe('P,O,A alinhados; OP e OB raios do triângulo OPB, ângulos de base α. Arco AB destacado e central AOB marcado 2α. Três passos escondidos usam isósceles e ângulo externo.');
-  teach(['Localize os dois raios iguais.','Pergunte por que os ângulos da base são iguais.','Identifique o central como externo ao triângulo.','Some α+α; avise que este é um caso da demonstração.']);
-
-  // 22
-  add('Diâmetro à vista, ângulo reto','Uma consequência',cols(card('',fig('inscribed','data-alpha="180" data-revealed="true"'),'blue'),card('Uma semicircunferência',eq('arco = 180°')+eq('inscrito = '+fraction('180°','2')+' = 90°',true)+'<p class="question">Se P mudar de lugar, ainda teremos um ângulo reto?</p>'+steps(['<strong>Sim.</strong> Enquanto P observa esse diâmetro, o arco observado continua sendo uma semicircunferência.']),'green'),'wide'),
+  add('Ângulo inscrito que observa um diâmetro','Uma consequência',cols(card('',fig('inscribed','data-alpha="180" data-revealed="true"'),'blue'),card('Uma semicircunferência',eq('arco = 180°')+eq('inscrito = '+fraction('180°','2')+' = 90°',true)+'<p class="question">Se P mudar de lugar, ainda teremos um ângulo reto?</p>'+steps(['<strong>Sim.</strong> Enquanto P observa esse diâmetro, o arco observado continua sendo uma semicircunferência.']),'green'),'wide'),
     'P permanece em um dos arcos abertos, sem coincidir com A ou B. Mova-o para mostrar que o triângulo continua retângulo no vértice P.');
   describe('AB diâmetro, arco observado 180°, inscrito 90°, P móvel. Pergunta se continua reto ao mover P; explicação escondida mantém semicircunferência.');
   teach(['Peça a metade de 180°.','Mova P e destaque o ângulo reto.','Nomeie o triângulo retângulo formado.']);
 
-  // 23
-  add('Mesmo arco, mesma medida','Ângulos inscritos',cols(card('',fig('inscribed','data-alpha="100" data-revealed="true" data-second="true"'),'blue'),card('Dois observadores','<p>P e Q estão no arco oposto ao arco observado AB.</p>'+eq('∠APB = ∠AQB = 50°',true)+'<p>Os ângulos inscritos que observam o <strong>mesmo arco</strong> têm a mesma medida.</p><div class="callout">Os mesmos extremos A e B também determinam outro arco. Confira qual deles o ângulo observa.</div>'),'wide'),
-    'P é móvel e Q fixo. Avise que coincidir P e Q não muda a relação; a superposição é apenas visual. Na consulta complementar há caso de arco maior 240° e inscrito 120°.');
-  describe('Arco AB de 100°, central 100° e dois inscritos com vértices P móvel e Q fixo no arco oposto, ambos 50°. Fórmula e condição mesmo arco.');
-  teach(['Compare P e Q sem mover A e B.','Peça a medida do segundo ângulo antes de apontar o rótulo.','Reforce que a igualdade vem do mesmo arco, não da proximidade dos vértices.']);
-
-  // 24
-  add('Antes da conta, escolha a relação','Leitura de figuras','<div class="cols three grow">'+card('1 · Vértice','<div class="big-word blue-text">O?</div><p>Está no centro, na circunferência ou fora dela?</p>','blue')+card('2 · Arco','<div class="big-word green-text">AB</div><p>Qual arco é observado? Ele contém o vértice inscrito?</p>','green')+card('3 · Medida','<div class="big-word orange-text">° / cm</div><p>O pedido é um ângulo, um arco em graus ou um comprimento?</p>','orange')+'</div><div class="callout">Depois de encontrar x, volte ao enunciado: <strong>o que ele realmente pediu?</strong></div>',
-    'Essa é a ponte para os exercícios. Não suponha que O sempre indica centro; o exercício 3 mostra uma exceção.');
-  describe('Três passos para leitura: localizar vértice, identificar arco observado e distinguir unidade angular de comprimento. Alerta para voltar ao pedido após encontrar x.');
-  teach(['Leia as três perguntas.','Peça que as usem no próximo exercício.','Avise que x pode ser só uma etapa da resposta.']);
-
-  // 25
-  add('Apostila 1: x não é a resposta final','Aplicar · central e inscrito',cols(card('',fig('exercise-1'),'blue'),card('Encontre o arco AB',chip('Q6 · dois resultados','orange')+'<p>Central: <strong>4x + 10</strong><br>Inscrito no mesmo arco: <strong>3x − 10</strong></p>'+steps(['4x + 10 = 2(3x − 10).','4x + 10 = 6x − 20 → <strong>x = 15</strong>.','Arco AB = 4 · 15 + 10 = <strong>70°</strong>.'])+chat('Q6'),'orange'),'wide'),
+  add('Exercício 1: cálculo de x e do arco AB','Aplicar · central e inscrito',cols(card('',fig('exercise-1'),'blue'),card('Encontre o arco AB',chip('Q6 · dois resultados','orange')+'<p>Central: <strong>4x + 10</strong><br>Inscrito no mesmo arco: <strong>3x − 10</strong></p>'+steps(['4x + 10 = 2(3x − 10).','4x + 10 = 6x − 20 → <strong>x = 15</strong>.','Arco AB = 4 · 15 + 10 = <strong>70°</strong>.'])+chat('Q6'),'orange'),'wide'),
     'Esquema reconstruído a partir dos dados fornecidos, com geometria compatível com 70° e 35°. O gabarito 15 se refere a x; o arco solicitado vale 70°. A pergunta manual registra x e arco separadamente.','Q6');
   describe('Figura com central 4x+10 e inscrito 3x−10 no mesmo arco AB. Q6 pede x e arco AB. Solução escondida em três etapas: igualdade com dobro, x=15, arco=70°.');
   teach(['Peça a relação antes da equação.','Distribua o 2 nos dois termos.','Encontre x e pergunte se o exercício terminou.','Volte ao arco pedido e calcule 70°.']);
 
-  // 26
-  add('Apostila 5: use a semicircunferência','Aplicar · diâmetro e arco',cols(card('',fig('exercise-5'),'blue'),card('Encontre o arco menor AC',chip('Q7 · a semicircunferência ajuda','orange')+'<p>AB é diâmetro e o inscrito BÂC mede 40°.</p>'+steps(['Arco BC = 2 · 40° = <strong>80°</strong>.','Arcos AC e CB completam <strong>180°</strong>.','Arco AC = 180° − 80° = <strong>100°</strong>.'])+chat('Q7'),'orange'),'wide'),
+  add('Exercício 5: medida do arco AC','Aplicar · diâmetro e arco',cols(card('',fig('exercise-5'),'blue'),card('Encontre o arco menor AC',chip('Q7 · medida do arco AC','orange')+'<p>AB é diâmetro e o inscrito BÂC mede 40°.</p>'+steps(['Arco BC = 2 · 40° = <strong>80°</strong>.','Arcos AC e CB completam <strong>180°</strong>.','Arco AC = 180° − 80° = <strong>100°</strong>.'])+chat('Q7'),'orange'),'wide'),
     'C está na semicircunferência inferior; o arco menor AC destacado é o pedido. O arco BC observado pelo ângulo em A mede 80°.','Q7');
   describe('AB diâmetro horizontal, C na semicircunferência inferior, ângulo BAC 40°. Q7 pede arco menor AC. Resolução: arco BC 80°, semicircunferência 180°, AC 100°.');
   teach(['Localize o arco observado pelos 40°.','Dobre para achar BC.','Complete a semicircunferência para achar AC.']);
 
-  // 27
-  add('Uma reta que toca a circunferência','Apoio para o ângulo circunscrito',cols(card('',fig('tangent-proof'),'blue'),card('O que precisamos agora','<p>Uma <strong>tangente</strong> encontra a circunferência em um único ponto.</p><p>No ponto de contato, a tangente é <strong>perpendicular ao raio</strong>.</p>'+eq('raio ⟂ tangente → 90°')+'<div class="callout green">Essa propriedade ajuda a compreender o ângulo circunscrito.</div>','green'),'wide'), 'Apresente a tangente somente como pré-requisito do ângulo circunscrito. A classificação das retas será aprofundada na próxima aula.','','58–70 min');
-  describe('Figura com duas tangentes e raios nos pontos de contato, com ângulos retos marcados. Apresenta tangente e perpendicularidade como apoio para o ângulo circunscrito.');
-  teach(['Identifique um ponto de contato.','Mostre o raio perpendicular à tangente.','Retome a propriedade ao construir o ângulo circunscrito.']);
-
-  // 28
-  add('O raio encontra a tangente a 90°','Pré-requisito para o circunscrito',cols(card('Uma propriedade essencial',eq('raio ⟂ tangente',true)+'<p>O raio deve chegar exatamente ao <strong>ponto de tangência</strong>.</p><p>Traçar um segmento de qualquer outro ponto não garante 90°.</p>','blue'),card('Use a propriedade','<p class="question">Uma reta é tangente em T. O é o centro. Quanto mede o ângulo entre OT e essa reta?</p>'+steps(['Como OT chega ao ponto de tangência, o ângulo mede <strong>90°</strong>.'])+'<p class="hand">Guarde esses 90°: vamos usá-los duas vezes.</p>','green')),
-    'Consolide a propriedade, não uma prova geral de tangência. Se houver dúvida, volte à figura anterior no caso Tangenciar.');
-  describe('Propriedade raio perpendicular à tangente no ponto de tangência. Pergunta sobre OT e tangente em T, solução escondida 90°.');
-  teach(['Pergunte onde o raio precisa terminar.','Peça a medida do ângulo.','Anuncie que duas tangentes fornecerão dois ângulos retos.']);
-
-  // 29
-  add('Duas tangentes, um ponto externo','Ângulo circunscrito',cols(card('',fig('circumscribed'),'blue'),card('Vértice fora da circunferência','<p>O ângulo circunscrito tem vértice externo e seus <strong>dois lados são tangentes</strong>.</p><p>PB e PC tocam a circunferência em B e C.</p>'+eq('OB ⟂ PB<br>OC ⟂ PC')+'<p class="question">O que acontece com α quando o central θ aumenta?</p>'),'wide'),
-    'Inicial θ=100°, α oculto. Recolha uma previsão, varie θ e revele. O modelo mantém tangência matematicamente: B e C são calculados a partir do ponto externo.');
-  describe('Duas tangentes PB e PC com vértice externo P; raios OB e OC e dois marcadores retos. Menor central θ inicial100°, ajustável30°–150°; circunscrito α oculto, botão revelar. P se desloca preservando tangência.');
+  add('Definição de ângulo circunscrito','Ângulo circunscrito',cols(card('',fig('circumscribed'),'blue'),card('Vértice fora da circunferência','<p>O ângulo circunscrito tem vértice externo e seus <strong>dois lados são tangentes</strong>.</p><p class="small">PB e PC tocam a circunferência somente em B e C. Nesses pontos, os raios formam 90° com os lados do ângulo.</p>'+eq('OB ⟂ PB<br>OC ⟂ PC')+'<p class="question">O que acontece com α quando o central θ aumenta?</p>'),'wide'),
+    'Inicial θ=100°, α oculto. Explique somente o significado dos dois lados tangentes: cada lado toca a circunferência em um ponto, onde forma 90° com o raio. A classificação das retas fica para a próxima aula. Recolha uma previsão, varie θ e revele. O modelo mantém tangência matematicamente: B e C são calculados a partir do ponto externo.');
+  describe('Duas tangentes PB e PC com vértice externo P; raios OB e OC e dois marcadores retos. Menor central θ inicial100°, ajustável30°–150°; circunscrito α oculto, botão revelar. P se desloca preservando tangência. O texto explica os dois contatos e os ângulos retos apenas para definir o circunscrito.');
   teach(['Classifique o ângulo pela posição de P e pelos dois lados tangentes.','Localize os dois ângulos retos.','Peça a previsão e teste com o controle.']);
 
-  // 30
-  add('Dois retos revelam a relação','Demonstrar · ângulo circunscrito',cols(card('',fig('tangent-proof'),'blue'),card('Quadrilátero PBOC',steps(['A soma dos ângulos internos é <strong>360°</strong>.','α + 90° + θ + 90° = 360°.','<strong>α = 180° − θ</strong>.'])+'<div class="callout">θ é o <strong>menor ângulo central</strong> entre os pontos de tangência.</div>','green'),'wide'),
-    'Percorra o quadrilátero P-B-O-C. A soma é 360°, com dois retos e o menor central no interior desse quadrilátero. Fórmula com diferença dos arcos e congruência dos segmentos tangentes estão na consulta complementar.');
+  add('Relação entre ângulo circunscrito e central','Demonstrar · ângulo circunscrito',cols(card('',fig('tangent-proof'),'blue'),card('Quadrilátero PBOC',steps(['A soma dos ângulos internos é <strong>360°</strong>.','α + 90° + θ + 90° = 360°.','<strong>α = 180° − θ</strong>.'])+'<div class="callout">θ é o <strong>menor ângulo central</strong> entre os pontos de tangência.</div>','green'),'wide'),
+    'Percorra o quadrilátero P-B-O-C. A soma é 360°, com dois retos e o menor central no interior desse quadrilátero. A fórmula com a diferença dos arcos está na consulta complementar.');
   describe('Quadrilátero PBOC formado por duas tangentes e dois raios. α em P, θ menor central em O, marcadores90° em B e C. Demonstração escondida em três passos chega a α=180°−θ.');
   teach(['Percorra os quatro vértices.','Some os dois ângulos retos.','Isole α e explique por que usamos o central menor.']);
 
-  // 31
-  add('Apostila 7: do inscrito às tangentes','Aplicar · duas relações',cols(card('',fig('exercise-7'),'blue'),card('Quanto mede α?',chip('Q8 · central e circunscrito','orange')+'<p>O inscrito BVC mede <strong>46°</strong>. PB e PC são tangentes.</p>'+steps(['Central BÔC = 2 · 46° = <strong>92°</strong>.','α = 180° − 92° = <strong>88°</strong>.'])+chat('Q8'),'orange'),'wide'),
+  add('Exercício 7: ângulo inscrito e circunscrito','Aplicar · duas relações',cols(card('',fig('exercise-7'),'blue'),card('Quanto mede α?',chip('Q8 · central e circunscrito','orange')+'<p>O inscrito BVC mede <strong>46°</strong>. PB e PC são tangentes.</p>'+steps(['Central BÔC = 2 · 46° = <strong>92°</strong>.','α = 180° − 92° = <strong>88°</strong>.'])+chat('Q8'),'orange'),'wide'),
     'Esquema combina as tangentes e o inscrito observando o arco menor BC. Q8 registra dois componentes: central 92° e circunscrito 88°. Sem corrida ou jogo coletivo.','Q8','70–85 min');
   describe('Circunferência com tangentes PB e PC, centro O e inscrito BVC de 46° no arco oposto. Q8 pede central BOC e circunscrito α. Duas etapas escondidas:92° e 88°.');
   teach(['Peça o central antes de perguntar α.','Dobre o inscrito.','Use os dois retos para chegar a 88°.','Confira se a resposta é coerente com o desenho.']);
 
-  // 32
-  add('Apostila 6: procure o isósceles','Retomada · dois raios',cols(card('',fig('exercise-6'),'blue'),card('Quanto mede o inscrito α?','<p>OA e OB são raios. O ângulo OÂB mede 28°.</p>'+steps(['OA = OB → os ângulos da base valem <strong>28°</strong>.','Central AÔB = 180° − 28° − 28° = <strong>124°</strong>.','α = 124° ÷ 2 = <strong>62°</strong>.']),'orange'),'wide'),
-    'Exercício de consolidação. Se o tempo estiver curto, deixe esta tela e a próxima para consulta; os problemas centrais já foram feitos.');
-  describe('OAB isósceles com dois raios, base com ângulo OAB28°. P está no arco oposto e inscrito APB é α. Solução escondida: outra base 28°, central 124°, inscrito 62°.');
-  teach(['Pergunte onde estão os lados iguais.','Use a soma 180° no triângulo.','Só então divida o central por2.']);
-
-  // 33
-  add('Apostila 3: os dois são inscritos','Retomada · mesmo arco',cols(card('',fig('exercise-3'),'blue'),card('Encontre x','<p>Os dois ângulos observam o mesmo arco PQ.</p>'+steps(['3x + 2 = 110 − 6x.','9x = 108 → <strong>x = 12</strong>.','Conferência: os dois ângulos medem <strong>38°</strong>.'])+'<div class="callout blue">A posição identifica o ponto: aqui, O não é o centro.</div>','orange'),'wide'),
-    'Reconstrução do contexto fornecido. O,P,Q,A pertencem à circunferência. Não aplique central=2×inscrito só por aparecer a letra O.');
-  describe('O,P,Q,A sobre a circunferência. Ângulos PAQ=3x+2 e POQ=110−6x observam arcoPQ e são iguais. Solução x12 e ambos38°. O explicitamente não é centro.');
-  teach(['Pergunte onde estão os dois vértices.','Relacione pelo mesmo arco.','Resolva a equação e confira38° nas duas expressões.']);
-
-  // 34
-  add('Escolha a relação pelo vértice','Síntese','<div class="cols three grow">'+card('Central',chip('No centro','blue')+eq('θ = arco')+'<p>A medida do central coincide com a medida angular do arco correspondente.</p>','blue')+card('Inscrito',chip('Na circunferência')+eq('α = '+fraction('arco','2'))+'<p>Use o arco que não contém o vértice do inscrito.</p>','green')+card('Circunscrito',chip('Fora · duas tangentes','orange')+eq('α = 180° − θ')+'<p>θ é o menor central entre os pontos de tangência.</p>','orange')+'</div><div class="callout">Para comprimentos: <strong>C = 2πr</strong>.</div>',
+  add('Resumo das relações entre ângulos','Síntese','<div class="cols three grow">'+card('Central',chip('No centro','blue')+eq('θ = arco')+'<p>A medida do central coincide com a medida angular do arco correspondente.</p>','blue')+card('Inscrito',chip('Na circunferência')+eq('α = '+fraction('arco','2'))+'<p>Use o arco que não contém o vértice do inscrito.</p>','green')+card('Circunscrito',chip('Fora · duas tangentes','orange')+eq('α = 180° − θ')+'<p>θ é o menor central entre os pontos de tangência.</p>','orange')+'</div><div class="callout">Para comprimentos: <strong>C = 2πr</strong>.</div>',
     'Faça uma síntese breve, pedindo que cada relação seja associada à posição do vértice. Não misture medida angular de arco e comprimento de arco.');
   describe('Síntese em três cartões: central=arco, inscrito=arco/2, circunscrito=180°−menorcentral. Rodapé: perímetro C=2πr.');
   teach(['Peça uma palavra para identificar cada vértice.','Retome a condição do mesmo arco no inscrito.','Diferencie as relações de ângulo das fórmulas de comprimento.']);
 
-  // 35
-  add('Saída individual','O que ficou da aula?',cols(card('Tente sem consultar',chip('Q9 · três respostas','orange')+'<p class="question">1. Um inscrito observa um arco de 140°. Quanto mede?</p><p class="question">2. Quanto é 90° em radianos?</p><p class="question">3. Duas tangentes determinam um menor central de 120°. Quanto mede o circunscrito?</p>'+chat('Q9'),'blue'),card('Confira depois de responder',steps(['1. Inscrito = 140° ÷ 2 = <strong>70°</strong>.','2. 90° = <strong>π/2 rad</strong>.','3. Circunscrito = 180° − 120° = <strong>60°</strong>.'])+'<p class="small">No chat, acrescente uma dúvida ou uma ideia que ficou clara.</p>','orange')),
+  add('Verificação da aprendizagem','Questões finais',cols(card('Responda individualmente',chip('Q9 · três respostas','orange')+'<p class="question">1. Um inscrito observa um arco de 140°. Quanto mede?</p><p class="question">2. Quanto é 90° em radianos?</p><p class="question">3. Duas tangentes determinam um menor central de 120°. Quanto mede o circunscrito?</p>'+chat('Q9'),'blue'),card('Resolução das questões',steps(['1. Inscrito = 140° ÷ 2 = <strong>70°</strong>.','2. 90° = <strong>π/2 rad</strong>.','3. Circunscrito = 180° − 120° = <strong>60°</strong>.'])+'<p class="small">No chat, acrescente uma dúvida ou uma ideia que ficou clara.</p>','orange')),
     'Dê um minuto de resposta individual antes de abrir os passos. Não mostre taxa de acerto durante a coleta. Q9 tem três componentes para revisão parcial.','Q9','85–90 min');
   describe('Q9 pede: inscrito sobre arco 140° (70°), conversão 90° (π/2 rad), circunscrito com menorcentral 120° (60°). Soluções escondidas individualmente em três passos.');
   teach(['Dê tempo para resposta individual.','Leia respostas sem abrir imediatamente o gabarito.','Revele cada item e registre o que precisa retomar.']);
 
-  // 36
-  add('Uma volta no que aprendemos','Fechamento','<div class="cols three grow">'+card('Descrever','<p>Centro, raio, diâmetro, arco e tangente.</p>'+eq('d = 2r'),'blue')+card('Medir','<p>Comprimentos em cm ou m.<br>Ângulos em graus ou radianos.</p>'+eq('180° = π rad'),'green')+card('Relacionar','<p>O vértice e o arco indicam a ferramenta para descobrir o ângulo.</p>'+eq('central = 2 × inscrito'),'orange')+'</div><div class="path-foot"><p class="hand">Olhe para a figura. Explique a relação. Só então calcule.</p><button data-supplement="homework">Consulta e próximos passos</button></div>',
-    'Não é uma lista de lição de casa. O botão abre orientação de revisão e banco de questões extras. Área e setor circular ficam para aulas seguintes.');
-  describe('Fechamento em três ações: descrever elementos, medir com unidades adequadas e relacionar ângulos. Botão abre consulta e próximos passos. Sem jogo e sem conteúdo de área.');
-  teach(['Retome um exemplo de objeto enviado na abertura.','Peça uma frase com uma relação aprendida.','Indique a consulta e as questões extras para revisão.']);
-
-  // Enxugamos o percurso preservando conceitos; duas retomadas viram exercícios extras.
-  const omitTitles=new Set(['Abertura e caminho são medidas diferentes','Um mapa para consultar','De graus para radianos','De radianos para graus','Mesmo arco, mesma medida','Antes da conta, escolha a relação','O raio encontra a tangente a 90°','Apostila 6: procure o isósceles','Apostila 3: os dois são inscritos','Uma volta no que aprendemos']);
-  for(let i=slides.length-1;i>=0;i--)if(omitTitles.has(slides[i].title))slides.splice(i,1);
-  const relation=slides.find(s=>s.title==='O central vale o dobro');
+  // Complementos da comparação entre os ângulos e orientação de encerramento.
+  const relation=slides.find(s=>s.title==='Relação entre ângulo central e inscrito');
   relation.body=relation.body.replace('data-revealed="true"','data-revealed="true" data-second="true"');
   relation.body=relation.body.replace('<div class="callout green">','<p class="small">Inscritos que observam o mesmo arco têm a mesma medida.</p><div class="callout green">');
   relation.context+=' A figura também mostra um segundo inscrito, Q, fixo no arco oposto; P e Q observam o mesmo arco e têm medidas iguais.';
   relation.guide.push('Explique que outros inscritos que observam o mesmo arco também medem 60°.');
-  const closing=slides.find(s=>s.title==='Saída individual');
+  const closing=slides.find(s=>s.title==='Verificação da aprendizagem');
   closing.notes+=' Se sobrar tempo, abra Questões extras antes da saída individual; os exercícios 3 e 6 da apostila estão entre as opções.';
   const reserve=[
     {id:'R13',level:'Consolidação',minutes:4,title:'Apostila 6 · dois raios',prompt:'OA e OB são raios e o ângulo OÂB mede 28°. Um ângulo inscrito observa o arco AB correspondente ao menor ângulo central. Quanto mede esse ângulo inscrito?',solution:['OA = OB, então os ângulos da base do triângulo isósceles medem 28°.','Central AÔB = 180° − 28° − 28° = 124°.','Inscrito = 124° ÷ 2 = 62°.']},
     {id:'R14',level:'Consolidação',minutes:4,title:'Apostila 3 · mesmo arco',prompt:'Dois ângulos inscritos observam o mesmo arco e medem 3x + 2 e 110 − 6x graus. Determine x.',solution:['Ângulos inscritos que observam o mesmo arco são iguais: 3x + 2 = 110 − 6x.','9x = 108, portanto x = 12.','Conferência: ambos medem 38°.']},
     {id:'R15',level:'Aquecimento',minutes:3,title:'Um arco em radianos',prompt:'Converta a medida angular de um arco de 30° para radianos usando regra de três.',solution:['360° correspondem a 2π rad; 30° correspondem a x.','x = 30 · 2π/360 = π/6 rad.']},
     {id:'R01',level:'Aquecimento',minutes:2,title:'Diâmetro e raio',prompt:'Uma circunferência tem diâmetro 12 cm. Qual é seu raio?',solution:['d=2r → r=12÷2.','r=6 cm.']},
-    {id:'R02',level:'Aquecimento',minutes:2,title:'Duas medidas do arco',prompt:'Um arco mede 80°. Qual é a medida angular do outro arco com os mesmos extremos?',solution:['Os dois arcos somam 360°.','360°−80°=280°.']},
+    {id:'R02',level:'Aquecimento',minutes:2,title:'Medidas dos dois arcos com extremos comuns',prompt:'Um arco mede 80°. Qual é a medida angular do outro arco com os mesmos extremos?',solution:['Os dois arcos somam 360°.','360°−80°=280°.']},
     {id:'R03',level:'Consolidação',minutes:3,title:'O contorno de uma roda',prompt:'Uma roda tem diâmetro 70 cm. Calcule o comprimento de sua circunferência em função de π e aproximadamente, usando π≈3,14.',solution:['C=πd=70π cm.','C≈70·3,14=219,8 cm.']},
     {id:'R04',level:'Consolidação',minutes:3,title:'45° e 135°',prompt:'Converta45° e 135° para radianos.',solution:['45°·π/180°=π/4 rad.','135°·π/180°=3π/4 rad.']},
-    {id:'R05',level:'Consolidação',minutes:3,title:'Da volta para os graus',prompt:'Converta2π/3 rad e 3π/2 rad para graus.',solution:['(2π/3)·180°/π=120°.','(3π/2)·180°/π=270°.']},
+    {id:'R05',level:'Consolidação',minutes:3,title:'Conversão de radianos para graus',prompt:'Converta2π/3 rad e 3π/2 rad para graus.',solution:['(2π/3)·180°/π=120°.','(3π/2)·180°/π=270°.']},
     {id:'R07',level:'Aplicação',minutes:3,title:'Inscrito e circunscrito',prompt:'Um inscrito observa um arco menor de 100°. Duas tangentes nos extremos desse arco formam outro ângulo. Quanto mede cada um?',solution:['Inscrito=100°/2=50°.','Circunscrito=180°−100°=80°.']},
-    {id:'R09',level:'Desafio',minutes:4,title:'Relógio sem congelar o ponteiro',prompt:'Qual é o menor ângulo entre os ponteiros às3h, às5h e às12h30?',solution:['3h:90°. 5h:150°.','12h30: minutos a 180° e horas a 15° após12h.','Menor diferença:180°−15°=165°.']},
-    {id:'R10',level:'Desafio',minutes:4,title:'Os mesmos extremos, outro arco',prompt:'A e B determinam arcos de 120° e 240°. Um inscrito observa o arco de 240°. Quanto mede? Podemos usar o central de 120° para aplicar diretamente central=2×inscrito?',solution:['Inscrito=240°/2=120°.','Não: o central correspondente é 240°, pois deve observar o mesmo arco.']},
-    {id:'R11',level:'Desafio',minutes:3,title:'Tangentes e arcos',prompt:'Um ângulo entre duas tangentes mede 50°. Determine o arco menor e o maior entre os pontos de tangência.',solution:['Arco menor=180°−50°=130°.','Arco maior=360°−130°=230°.','(230°−130°)/2=50°.']},
+    {id:'R09',level:'Desafio',minutes:4,title:'Ângulos entre os ponteiros do relógio',prompt:'Qual é o menor ângulo entre os ponteiros às3h, às5h e às12h30?',solution:['3h:90°. 5h:150°.','12h30: minutos a 180° e horas a 15° após12h.','Menor diferença:180°−15°=165°.']},
+    {id:'R10',level:'Desafio',minutes:4,title:'Ângulo inscrito que observa o arco maior',prompt:'A e B determinam arcos de 120° e 240°. Um inscrito observa o arco de 240°. Quanto mede? Podemos usar o central de 120° para aplicar diretamente central=2×inscrito?',solution:['Inscrito=240°/2=120°.','Não: o central correspondente é 240°, pois deve observar o mesmo arco.']},
+    {id:'R11',level:'Desafio',minutes:3,title:'Ângulo circunscrito e medidas dos arcos',prompt:'Um ângulo entre duas tangentes mede 50°. Determine o arco menor e o maior entre os pontos de tangência.',solution:['Arco menor=180°−50°=130°.','Arco maior=360°−130°=230°.','(230°−130°)/2=50°.']},
   ];
   const supplements={
-    proof:{title:'Arcos, tangentes e condições das relações',body:'<h3>O arco do inscrito</h3><p>É o arco entre os pontos dos lados que não contém o vértice. Para um arco de 240°, o inscrito mede 120° e o central correspondente mede 240°. O central menor, de 120°, corresponde ao outro arco.</p><h3>Dois ângulos centrais</h3>'+eq('α + β = 360°')+'<p>São replementares. Não confundir com suplementares, cuja soma é 180°.</p><h3>Outra expressão para o circunscrito</h3>'+eq('α = '+fraction('arco maior − arco menor','2'))+'<p>Se o arco menor mede θ, o maior mede 360°−θ. Então α=(360°−2θ)/2=180°−θ.</p><h3>Uma demonstração do dobro</h3><div data-figure="proof"></div><p>Quando P,O,A estão alinhados, OP=OB torna OPB isósceles. Os dois ângulos de base são α e o central AOB é externo:α+α=2α. É um caso da demonstração; as demais posições requerem decompor a figura.</p>'},
-    homework:{title:'Consulta e orientação de revisão',body:'<p>Retome os exercícios 1,3,5,6 e 7 da apostila. Os esquemas desta aula foram reconstruídos a partir dos dados fornecidos pelo professor.</p><h3>Correção do exercício 1</h3><p>O valor de x é 15. O arco AB solicitado mede 70°.</p><h3>O que fica para depois</h3><p>Área do círculo e setor circular não integram esta aula. Os exercícios 2 e 4 exigem relações adicionais: relações adicionais que serão abordadas posteriormente. Antes de usar o exercício 4, confira a posição do ângulo na figura original.</p><h3>Como revisar</h3><ol><li>Localize o vértice e o arco.</li><li>Escolha a relação e explique por que ela vale.</li><li>Calcule e volte ao pedido do problema.</li><li>Confira se a unidade é grau, radiano ou comprimento.</li></ol><p>O botão Questões extras inclui as retomadas dos exercícios 6 e 3 e outros problemas com soluções por etapas.</p>'}
+    proof:{title:'Arcos, tangentes e condições das relações',body:'<h3>O arco do inscrito</h3><p>É o arco entre os pontos dos lados que não contém o vértice. Para um arco de 240°, o inscrito mede 120° e o central correspondente mede 240°. O central menor, de 120°, corresponde ao outro arco.</p><h3>Dois ângulos centrais</h3>'+eq('α + β = 360°')+'<p>São replementares. Não confundir com suplementares, cuja soma é 180°.</p><h3>Outra expressão para o circunscrito</h3>'+eq('α = '+fraction('arco maior − arco menor','2'))+'<p>Se o arco menor mede θ, o maior mede 360°−θ. Então α=(360°−2θ)/2=180°−θ.</p>'},
+    homework:{title:'Consulta e orientação de revisão',body:'<p>Retome os exercícios 1,3,5,6 e 7 da apostila. Os esquemas desta aula foram reconstruídos a partir dos dados fornecidos pelo professor.</p><h3>Correção do exercício 1</h3><p>O valor de x é 15. O arco AB solicitado mede 70°.</p><h3>O que fica para depois</h3><p>Área do círculo e setor circular não integram esta aula. Os exercícios 2 e 4 exigem relações adicionais que serão abordadas posteriormente. Antes de usar o exercício 4, confira a posição do ângulo na figura original.</p><h3>Como revisar</h3><ol><li>Localize o vértice e o arco.</li><li>Escolha a relação e explique por que ela vale.</li><li>Calcule e volte ao pedido do problema.</li><li>Confira se a unidade é grau, radiano ou comprimento.</li></ol><p>O botão Questões extras inclui as retomadas dos exercícios 6 e 3 e outros problemas com soluções por etapas.</p>'}
   };
   const rules='<p>Uma tentativa ajuda a descobrir o próximo passo. Os pontos são formativos e revisáveis.</p><ul class="bullets"><li>Participar de uma pergunta: <strong>1 ponto</strong>.</li><li>Nos itens com resposta, os componentes corretos dividem <strong>mais 1 ponto</strong>.</li><li>Sem bônus de velocidade no modo manual.</li><li>Uma correção substitui o registro anterior; repetir não multiplica pontos.</li><li>Perguntas omitidas saem do total possível.</li></ul><p class="small muted">Modo manual: até 17 pontos nas nove perguntas, se todas forem usadas. O assistente opcional tem regras e registros separados. As medições do laboratório não são enviadas a outros aparelhos.</p>';
   return {slides,reserve,supplements,rules,fraction,eq,card,fig,steps,chat,cols,chip};
@@ -769,9 +676,9 @@ function startPresentation(){
     if(type==='live-chart')renderLiveChart(data);
     if(type==='chat')showChat(data);
   });
-  $('#app').innerHTML='<div id="viewport"><main id="stage">'+Content.slides.map((s,i)=>'<section class="slide '+(i===0?'cover ':'')+(i===current?'active':'')+'" data-slide="'+i+'" aria-label="'+(i+1)+'. '+esc(s.title)+'"><div class="decor" aria-hidden="true"></div>'+(i===0?'':'<header class="slide-head"><div class="head-bar"></div><div><div class="eyebrow">'+esc(s.block)+'</div><h2>'+s.title+'</h2></div></header>')+'<div class="slide-body">'+s.body+'</div><footer class="slide-foot"><span class="tagline">Circunferências · uma volta, muitas relações</span><span class="footer-end"><span class="foot-page">'+String(i+1).padStart(2,'0')+'</span>'+logo+'</span></footer></section>').join('')+'</main></div>'+
+  $('#app').innerHTML='<div id="viewport"><main id="stage">'+Content.slides.map((s,i)=>'<section class="slide '+(i===0?'cover ':'')+(i===current?'active':'')+'" data-slide="'+i+'" aria-label="'+(i+1)+'. '+esc(s.title)+'"><div class="decor" aria-hidden="true"></div>'+(i===0?'':'<header class="slide-head"><div class="head-bar"></div><div><div class="eyebrow">'+esc(s.block)+'</div><h2>'+s.title+'</h2></div></header>')+'<div class="slide-body">'+s.body+'</div><footer class="slide-foot"><span class="tagline">Circunferências · conceitos e ângulos</span><span class="footer-end"><span class="foot-page">'+String(i+1).padStart(2,'0')+'</span>'+logo+'</span></footer></section>').join('')+'</main></div>'+
     '<nav id="toolbar" aria-label="Navegação da aula"><button id="prev" aria-label="Tela anterior" title="←">←</button><span class="nav-number" id="nav-number"></span><button id="next" aria-label="Próxima tela" title="→">→</button><span class="divider"></span><button id="index-button" title="M">Índice</button><button id="consult-button" title="C">Consulta</button><button id="full-button" title="F" aria-label="Alternar tela cheia">⛶</button><button id="teacher-button">Professor ↗</button><button id="chat-button" aria-pressed="true" title="Mostrar na aula as mensagens do chat do Meet (requer a extensão com a captura ativa)">Chat na tela</button></nav><div id="chat-overlay" aria-hidden="true"></div><div id="progress"></div>'+
-    '<dialog id="index-dialog" class="modal"><div class="modal-head"><h2>Roteiro da aula</h2><button data-close>Fechar</button></div><div class="index-grid">'+Content.slides.map((s,i)=>'<button data-go="'+i+'"><span>'+String(i+1).padStart(2,'0')+' · '+esc(s.block)+'</span>'+esc(s.title)+'</button>').join('')+'</div><p class="keyboard-help">← → navegar · M índice · C consulta · F tela cheia · Home / End primeira / última tela · Esc fechar</p><div class="buttons"><button data-rules>Nosso combinado</button> <button data-supplement="proof">Arcos e tangentes</button> <button data-supplement="homework">Consulta e revisão</button> <button data-open-extras>Questões extras</button> <button data-open-chart>Gráfico do assistente</button> <button id="print-button">Imprimir com soluções</button></div></dialog>'+
+    '<dialog id="index-dialog" class="modal"><div class="modal-head"><h2>Roteiro da aula</h2><button data-close>Fechar</button></div><div class="index-grid">'+Content.slides.map((s,i)=>'<button data-go="'+i+'"><span>'+String(i+1).padStart(2,'0')+' · '+esc(s.block)+'</span>'+esc(s.title)+'</button>').join('')+'</div><p class="keyboard-help">← → navegar · M índice · C consulta · F tela cheia · Home / End primeira / última tela · Esc fechar</p><div class="buttons"><button data-rules>Nosso combinado</button> <button data-supplement="proof">Consulta de ângulos</button> <button data-supplement="homework">Consulta e revisão</button> <button data-open-extras>Questões extras</button> <button data-open-chart>Gráfico do assistente</button> <button id="print-button">Imprimir com soluções</button></div></dialog>'+
     '<dialog id="supplement-dialog" class="modal supplement"><div class="modal-head"><h2 id="supplement-title"></h2><button data-close>Voltar à aula</button></div><div id="supplement-body"></div></dialog>'+
     '<dialog id="rules-dialog" class="modal"><div class="modal-head"><h2>Nosso combinado</h2><button data-close>Voltar à aula</button></div><div class="rules-body">'+Content.rules+'</div></dialog>'+
     '<dialog id="public-dialog" class="modal"><div class="modal-head"><h2>Participação da turma</h2><button data-close>Voltar à aula</button></div><div id="public-body"></div></dialog>'+
