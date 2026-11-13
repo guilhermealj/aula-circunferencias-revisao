@@ -183,7 +183,7 @@ const LessonCore = (() => {
       "Circunscrito 88°"
     ],
     "key": "92°; 88°",
-    "slide": 21
+    "slide": 22
   },
   {
     "id": "Q9",
@@ -194,7 +194,7 @@ const LessonCore = (() => {
       "Circunscrito 60°"
     ],
     "key": "70°; π/2 rad; 60°",
-    "slide": 23
+    "slide": 24
   }
 ];
   const uid=()=>typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2);
@@ -513,6 +513,10 @@ const Content = (() => {
     'C está na semicircunferência inferior; o arco menor AC destacado é o pedido. O arco BC observado pelo ângulo em A mede 80°.','Q7');
   describe('AB diâmetro horizontal, C na semicircunferência inferior, ângulo BAC 40°. Q7 pede arco menor AC. Resolução: arco BC 80°, semicircunferência 180°, AC 100°.');
   teach(['Localize o arco observado pelos 40°.','Dobre para achar BC.','Complete a semicircunferência para achar AC.']);
+
+  add('Reta tangente e raio no ponto de contato','Preparação para o ângulo circunscrito',cols(card('',fig('tangent'),'blue'),card('Um único ponto em comum','<p>A <strong>reta tangente</strong> toca a circunferência em um único ponto T.</p><p>O raio que chega ao ponto de contato é <strong>perpendicular à tangente</strong>.</p>'+eq('OT ⟂ tangente',true)+eq('ângulo em T = 90°')+'<p class="question">Clique em Tangenciar e identifique o ângulo reto.</p>'),'wide'),'Use Tangenciar para mostrar o contato em T e o raio OT. A comparação com outras posições é apenas visual; o foco é a perpendicularidade necessária ao circunscrito.');
+  describe('Reta móvel em relação à circunferência. Botão Tangenciar posiciona a reta com um único contato T, desenha o raio OT e marca 90°.');
+  teach(['Clique em Tangenciar.','Identifique o único ponto de contato T.','Mostre que OT forma 90° com a reta.','Na próxima tela, procure essa propriedade nos dois contatos.']);
 
   add('Definição de ângulo circunscrito','Ângulo circunscrito',cols(card('',fig('circumscribed'),'blue'),card('Vértice fora da circunferência','<p>O ângulo circunscrito tem vértice externo e seus <strong>dois lados são tangentes</strong>.</p><p class="small">PB e PC tocam a circunferência somente em B e C. Nesses pontos, os raios formam 90° com os lados do ângulo.</p>'+eq('OB ⟂ PB<br>OC ⟂ PC')+'<p class="question">O que acontece com α quando o central θ aumenta?</p>'),'wide'),
     'Inicial θ=100°, α oculto. Explique somente o significado dos dois lados tangentes: cada lado toca a circunferência em um ponto, onde forma 90° com o raio. A classificação das retas fica para a próxima aula. Recolha uma previsão, varie θ e revele. O modelo mantém tangência matematicamente: B e C são calculados a partir do ponto externo.');
