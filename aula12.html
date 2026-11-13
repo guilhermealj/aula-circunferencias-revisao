@@ -154,7 +154,7 @@ const LessonCore = (() => {
       "Mesmo arco observado"
     ],
     "key": "Permanece igual; 60°; mantém o mesmo arco AB",
-    "slide": 13
+    "slide": 14
   },
   {
     "id": "Q6",
@@ -164,7 +164,7 @@ const LessonCore = (() => {
       "Arco AB = 70°"
     ],
     "key": "x=15; arco AB=70°",
-    "slide": 17
+    "slide": 18
   },
   {
     "id": "Q7",
@@ -173,7 +173,7 @@ const LessonCore = (() => {
       "Arco AC = 100°"
     ],
     "key": "100°",
-    "slide": 18
+    "slide": 19
   },
   {
     "id": "Q8",
@@ -183,7 +183,7 @@ const LessonCore = (() => {
       "Circunscrito 88°"
     ],
     "key": "92°; 88°",
-    "slide": 22
+    "slide": 23
   },
   {
     "id": "Q9",
@@ -194,7 +194,7 @@ const LessonCore = (() => {
       "Circunscrito 60°"
     ],
     "key": "70°; π/2 rad; 60°",
-    "slide": 24
+    "slide": 25
   }
 ];
   const uid=()=>typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2);
@@ -338,6 +338,11 @@ const Geo = (() => {
   }
   function mount(host){
     if(host.dataset.mounted)return;host.dataset.mounted='true';const type=host.dataset.figure;
+    if(type==='intro-central'||type==='intro-inscribed'){
+      const {o,r,A,B,P,start}=inscribedModel(120,.5),central=type==='intro-central',v=central?o:P;
+      const drawing=circle(o,r,'#e4eaf622')+arc(o,r,start,120)+line(v,A,central?colors.blue:colors.green)+line(v,B,central?colors.blue:colors.green)+wedge(A,v,B,central?'α':'β',32,central?colors.blue:colors.orange)+point(o,'O')+point(A,'A',o)+point(B,'B',o)+(central?'':point(P,'P',o));
+      host.innerHTML=svg(drawing,620,330,central?'Ângulo central AÔB: vértice O no centro, lados passando por A e B, arco AB destacado':'Ângulo inscrito APB: vértice P na circunferência, lados passando por A e B, arco AB destacado');return;
+    }
     const statics={everyday,proof,'exercise-1':()=>inscribedFigure(70,.5,{algebra:true}),'exercise-5':exercise5,'exercise-6':exercise6,'exercise-3':exercise3,'exercise-7':()=>tangentFigure(92,{inscribed:true,revealed:false}),'tangent-proof':()=>tangentFigure(100,{general:true})};
     if(statics[type]){host.innerHTML=statics[type]();return;}
     if(type==='circle-disc'){
@@ -513,10 +518,10 @@ const Content = (() => {
   teach(['Peça a correspondência com meia volta.','Monte a regra de três.','Confira que o resultado é 150 graus.']);
 
   // 18
-  add('Onde está o vértice?','Ângulo central e ângulo inscrito',cols(card('No centro',eq('Vértice em O')+'<p>É um <strong>ângulo central</strong>.</p><p>Os lados são semirretas que contêm os raios até A e B.</p>','blue'),card('Na circunferência',eq('Vértice em P')+'<p>É um <strong>ângulo inscrito</strong>.</p><p>Seus lados passam por outros dois pontos A e B da circunferência.</p>','green'))+'<div class="callout">Antes de calcular: identifique o vértice e destaque o arco observado.</div>',
-    'Não classifique pelo tamanho aparente. O centro é identificado na figura; a letra O sozinha não garante que o ponto seja centro.','','39–58 min');
-  describe('Dois cartões definem central pelo vértice no centro O e inscrito pelo vértice P na circunferência, com lados passando por A e B. Orienta localizar vértice e arco antes de calcular.');
-  teach(['Retome o central.','Defina o inscrito pela posição do vértice.','Anuncie o experimento: o observador vai ocupar vários lugares na borda.']);
+  add('Onde está o vértice?','Ângulo central e ângulo inscrito',cols(card('Central · vértice no centro',fig('intro-central')+'<p>O vértice <strong>O</strong> está no centro. Os lados passam por A e B.</p>','blue'),card('Inscrito · vértice na circunferência',fig('intro-inscribed')+'<p>O vértice <strong>P</strong> está na circunferência. Os lados passam por A e B.</p>','green'))+'<div class="callout">O arco AB destacado é o mesmo. Que relação há entre os ângulos?</div>',
+    'Retome a definição já vista do central. Antes de comparar medidas, apresente o inscrito e mostre seu vértice na circunferência. Na figura inscrita, o arco destacado AB é o que não contém P. A pergunta prepara a investigação, sem antecipar a regra.','','39–58 min');
+  describe('Dois desenhos lado a lado com o mesmo arco AB destacado. À esquerda, ângulo central AÔB com vértice O no centro. À direita, inscrito APB com vértice P na circunferência. Ambos têm lados passando por A e B. Pergunta sobre a relação, sem revelar medidas.');
+  teach(['Retome a figura da esquerda: o vértice O está no centro, então AÔB é central.','Na figura da direita, localize P na circunferência e acompanhe os lados PA e PB: APB é inscrito.','Aponte A e B e o mesmo arco destacado nas duas figuras; no inscrito, esse arco não contém P.','Peça uma hipótese sobre a relação entre as aberturas. Não revele o dobro ainda.','Na próxima tela, mova P e deixe a turma testar o que acontece.']);
 
   // 19
   add('Cinema: o ângulo vai mudar?','Dinâmica 3 · prever e experimentar',cols(card('',fig('inscribed'),'blue'),card('Aposte antes de arrastar',chip('Q5 · três descobertas','orange')+'<p class="question">Quando P muda de lugar, o ângulo aumenta, diminui ou fica igual?</p><p>Depois de testar:</p><p>1. O que aconteceu?<br>2. Qual a medida do inscrito?<br>3. O que foi mantido na figura?</p>'+chat('Q5'),'orange'),'wide'),
@@ -626,7 +631,7 @@ const Content = (() => {
   teach(['Retome um exemplo de objeto enviado na abertura.','Peça uma frase com uma relação aprendida.','Indique a consulta e as questões extras para revisão.']);
 
   // Enxugamos o percurso preservando conceitos; duas retomadas viram exercícios extras.
-  const omitTitles=new Set(['Abertura e caminho são medidas diferentes','Um mapa para consultar','De graus para radianos','De radianos para graus','Onde está o vértice?','Mesmo arco, mesma medida','Antes da conta, escolha a relação','O raio encontra a tangente a 90°','Apostila 6: procure o isósceles','Apostila 3: os dois são inscritos','Uma volta no que aprendemos']);
+  const omitTitles=new Set(['Abertura e caminho são medidas diferentes','Um mapa para consultar','De graus para radianos','De radianos para graus','Mesmo arco, mesma medida','Antes da conta, escolha a relação','O raio encontra a tangente a 90°','Apostila 6: procure o isósceles','Apostila 3: os dois são inscritos','Uma volta no que aprendemos']);
   for(let i=slides.length-1;i>=0;i--)if(omitTitles.has(slides[i].title))slides.splice(i,1);
   const relation=slides.find(s=>s.title==='O central vale o dobro');
   relation.body=relation.body.replace('data-revealed="true"','data-revealed="true" data-second="true"');
