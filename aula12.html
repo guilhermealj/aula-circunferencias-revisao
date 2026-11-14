@@ -154,7 +154,7 @@ const LessonCore = (() => {
       "Mesmo arco observado"
     ],
     "key": "Permanece igual; 60°; mantém o mesmo arco AB",
-    "slide": 14
+    "slide": 15
   },
   {
     "id": "Q6",
@@ -164,7 +164,7 @@ const LessonCore = (() => {
       "Arco AB = 70°"
     ],
     "key": "x=15; arco AB=70°",
-    "slide": 17
+    "slide": 18
   },
   {
     "id": "Q7",
@@ -173,7 +173,7 @@ const LessonCore = (() => {
       "Arco AC = 100°"
     ],
     "key": "100°",
-    "slide": 18
+    "slide": 19
   },
   {
     "id": "Q8",
@@ -183,7 +183,7 @@ const LessonCore = (() => {
       "Circunscrito 88°"
     ],
     "key": "92°; 88°",
-    "slide": 22
+    "slide": 23
   },
   {
     "id": "Q9",
@@ -194,7 +194,7 @@ const LessonCore = (() => {
       "Circunscrito 60°"
     ],
     "key": "70°; π/2 rad; 60°",
-    "slide": 24
+    "slide": 25
   }
 ];
   const uid=()=>typeof crypto!=='undefined'&&crypto.randomUUID?crypto.randomUUID():'id-'+Date.now()+'-'+Math.random().toString(36).slice(2);
@@ -483,6 +483,10 @@ const Content = (() => {
     'Regra de três nas duas direções. Recolha as duas partes separadamente, sem exigir formato rígido no chat. No tempo principal, priorize 60°; o inverso pode ser concluído na consulta se a turma precisar de mais tempo.','Q4');
   describe('Q4 em dois cartões: converter 60° para π/3 rad e converter 5π/6 rad para 150°. Usa 180°↔π rad com soluções em dois passos independentes e escondidos.');
   teach(['Monte a correspondência com 180° e π rad.','Peça a primeira conversão; revele um passo por vez.','Na segunda, mostre o cancelamento de π.','Confira se a resposta final usa a unidade pedida.']);
+
+  add('Pausa','Intervalo','<div class="grow" style="display:flex;align-items:center;justify-content:center;text-align:center"><div><h2>Pausa</h2><p class="intro">Vamos fazer um intervalo.</p><p>Na volta: ângulos centrais, inscritos e circunscritos.</p></div></div>','Retome a aula avançando para a próxima tela.');
+  describe('Tela de pausa. Informa que, após o intervalo, a aula continua com ângulos centrais, inscritos e circunscritos.');
+  teach(['Combine com a turma o horário de retorno.','Ao voltar, avance para a introdução dos ângulos.']);
 
   add('Definições de ângulo central e inscrito','Ângulo central e ângulo inscrito',cols(card('Central · vértice no centro',fig('intro-central')+'<p>O vértice <strong>O</strong> está no centro. Os lados passam por A e B.</p>','blue'),card('Inscrito · vértice na circunferência',fig('intro-inscribed')+'<p>O vértice <strong>P</strong> está na circunferência. Os lados passam por A e B.</p>','green'))+'<div class="callout">O arco AB destacado é o mesmo. Que relação há entre os ângulos?</div>',
     'Retome a definição já vista do central. Antes de comparar medidas, apresente o inscrito e mostre seu vértice na circunferência. Na figura inscrita, o arco destacado AB é o que não contém P. A pergunta prepara a investigação, sem antecipar a regra.','','39–58 min');
