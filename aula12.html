@@ -338,6 +338,18 @@ const Geo = (() => {
   }
   function mount(host){
     if(host.dataset.mounted)return;host.dataset.mounted='true';const type=host.dataset.figure;
+    if(type==='break-timer'){
+      host.innerHTML='<div style="font-size:100px;font-weight:700;font-variant-numeric:tabular-nums;line-height:1.3" data-clock role="timer" aria-label="Tempo restante do intervalo">15:00</div><div class="controls" style="justify-content:center"><button data-start>Iniciar</button><button data-pause disabled>Pausar</button><button data-reset>Reiniciar</button></div><p data-status aria-live="polite">Pronto para iniciar.</p>';
+      let remaining=900000,deadline=0,tick=null;
+      const clock=$('[data-clock]',host),start=$('[data-start]',host),pause=$('[data-pause]',host),status=$('[data-status]',host);
+      const draw=()=>{const seconds=Math.ceil(remaining/1000);clock.textContent=String(Math.floor(seconds/60)).padStart(2,'0')+':'+String(seconds%60).padStart(2,'0');};
+      const stop=()=>{clearInterval(tick);tick=null;start.disabled=false;pause.disabled=true;};
+      const update=()=>{remaining=Math.max(0,deadline-Date.now());draw();if(!remaining){stop();start.disabled=true;status.textContent='Intervalo encerrado. Vamos continuar a aula.';}};
+      start.onclick=()=>{if(tick!==null||remaining<=0)return;deadline=Date.now()+remaining;start.disabled=true;pause.disabled=false;status.textContent='Intervalo em andamento.';tick=setInterval(update,250);update();};
+      pause.onclick=()=>{update();stop();if(remaining>0){start.textContent='Continuar';status.textContent='Timer pausado.';}};
+      $('[data-reset]',host).onclick=()=>{stop();remaining=900000;start.textContent='Iniciar';status.textContent='Pronto para iniciar.';draw();};
+      return;
+    }
     if(type==='intro-central'||type==='intro-inscribed'){
       const {o,r,A,B,P,start}=inscribedModel(120,.5),central=type==='intro-central',v=central?o:P;
       const drawing=circle(o,r,'#e4eaf622')+arc(o,r,start,120)+line(v,A,central?colors.blue:colors.green)+line(v,B,central?colors.blue:colors.green)+wedge(A,v,B,central?'α':'β',32,central?colors.blue:colors.orange)+point(o,'O')+point(A,'A',o)+point(B,'B',o)+(central?'':point(P,'P',o));
@@ -484,8 +496,8 @@ const Content = (() => {
   describe('Q4 em dois cartões: converter 60° para π/3 rad e converter 5π/6 rad para 150°. Usa 180°↔π rad com soluções em dois passos independentes e escondidos.');
   teach(['Monte a correspondência com 180° e π rad.','Peça a primeira conversão; revele um passo por vez.','Na segunda, mostre o cancelamento de π.','Confira se a resposta final usa a unidade pedida.']);
 
-  add('Pausa','Intervalo','<div class="grow" style="display:flex;align-items:center;justify-content:center;text-align:center"><div><h2>Pausa</h2><p class="intro">Vamos fazer um intervalo.</p><p>Na volta: ângulos centrais, inscritos e circunscritos.</p></div></div>','Retome a aula avançando para a próxima tela.');
-  describe('Tela de pausa. Informa que, após o intervalo, a aula continua com ângulos centrais, inscritos e circunscritos.');
+  add('Pausa','Intervalo','<div class="grow" style="display:flex;align-items:center;justify-content:center;text-align:center"><div><p class="intro">Intervalo de 15 minutos</p>'+fig('break-timer')+'<p>Na volta: ângulos centrais, inscritos e circunscritos.</p></div></div>','Retome a aula avançando para a próxima tela.');
+  describe('Tela de pausa com timer de 15 minutos e botões Iniciar, Pausar e Reiniciar. Informa que, após o intervalo, a aula continua com ângulos centrais, inscritos e circunscritos.');
   teach(['Combine com a turma o horário de retorno.','Ao voltar, avance para a introdução dos ângulos.']);
 
   add('Definições de ângulo central e inscrito','Ângulo central e ângulo inscrito',cols(card('Central · vértice no centro',fig('intro-central')+'<p>O vértice <strong>O</strong> está no centro. Os lados passam por A e B.</p>','blue'),card('Inscrito · vértice na circunferência',fig('intro-inscribed')+'<p>O vértice <strong>P</strong> está na circunferência. Os lados passam por A e B.</p>','green'))+'<div class="callout">O arco AB destacado é o mesmo. Que relação há entre os ângulos?</div>',
